@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "bong-space"
+version = "0.1.0"
+description = ""
+authors = ["dev-bong <qhddnjswo011@gmail.com>"]
+readme = "README.md"
+packages = [{include = "bong_space"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.94.1"
+uvicorn = "^0.21.1"
+sqlalchemy = "^2.0.6"
+psycopg2-binary = "^2.9.5"
+alembic = "^1.10.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
