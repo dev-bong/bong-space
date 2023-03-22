@@ -1,6 +1,8 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from sqlalchemy import select
 
-from database import SessionLocal
+from database import get_db
 from models import Category
 
 router = APIRouter(
@@ -9,8 +11,6 @@ router = APIRouter(
 
 
 @router.get("/list")
-def category_list():
-    db = SessionLocal()
-    _question_list = db.query(Category).all()
-    db.close()
-    return _question_list
+def category_list(db: Session = Depends(get_db)):
+    _category_list = db.execute(select(Category)).scalars().all()
+    return _category_list
